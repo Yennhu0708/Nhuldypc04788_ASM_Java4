@@ -57,11 +57,4 @@
         </div>
     </nav>
 
-    <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="<c:url value = '/Templates/User/img/hero.jpg'/>">
-        <form class="d-flex tm-search-form">
-            <input class="form-control tm-search-input" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success tm-search-btn" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-    </div>
+    <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="<c:url value = '/Templates/User/img/hero.jpg'/>"></div>
