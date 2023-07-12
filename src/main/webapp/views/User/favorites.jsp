@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SARAH VIDEOS</title>
+<title>${sessionScope.currentUser.username}'s favorites</title>
 <%@ include file="/Common/Head.jsp"%>
 </head>
 <body>
@@ -15,7 +15,7 @@
 
 	<div class="container-fluid tm-container-content tm-mt-60">
 		<div class="row mb-4">
-			<h2 class="col-6 tm-text-primary">Phim Mới Năm 2023</h2>
+			<h2 class="col-6 tm-text-primary">Phim Yêu Thích Của Bạn</h2>
 			<div class="col-6 d-flex justify-content-end align-items-center">
 				<form action="" class="tm-text-primary">
 					Page <input type="text" value="1" size="1"
@@ -48,24 +48,6 @@
 					</div>
 				</div>
 			</c:forEach>
-				
-			
-		</div>
-		<!-- row -->
-		<div class="row tm-mb-90">
-			<div
-				class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
-				<a href="javascript:void(0);"
-					class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
-				<div class="tm-paging d-flex">
-					<a href="javascript:void(0);" class="active tm-paging-link">1</a> <a
-						href="javascript:void(0);" class="tm-paging-link">2</a> <a
-						href="javascript:void(0);" class="tm-paging-link">3</a> <a
-						href="javascript:void(0);" class="tm-paging-link">4</a>
-				</div>
-				<a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next
-					Page</a>
-			</div>
 		</div>
 	</div>
 

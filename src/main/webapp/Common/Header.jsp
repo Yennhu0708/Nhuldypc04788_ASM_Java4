@@ -11,7 +11,7 @@
     </div>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<c:url value='/index'/>">
                 <i class="fas fa-film mr-2"></i>
                	SARAH VIDEOS
             </a>
@@ -24,7 +24,7 @@
             		<c:when test = "${not empty sessionScope.currentUser}">
             		 		 <!-- Đã Đăng Nhập -->	
 		                <li class="nav-item">
-		                    <a class="nav-link nav-link-1 active" aria-current="page" href="">Wellcome, ${sessionScope.currentUser.username}</a>
+		                    <a class="nav-link nav-link-1 active" aria-current="page" href="">Welcome, ${sessionScope.currentUser.username}</a>
 		                </li>
 		                 <li class="nav-item">
 		                    <a class="nav-link nav-link-1" href="Myfavorites">My favorites</a>

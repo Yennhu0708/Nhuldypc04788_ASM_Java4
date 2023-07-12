@@ -16,7 +16,7 @@
 	<div class="container-fluid tm-container-content tm-mt-60">
 		<div class="row mb-4">
 			<h2 class="col-12 tm-text-primary">${video.title}</h2>
-			${video.title}
+			<p>${video.description}</p>
 		</div>
 		<div class="row tm-mb-90">
 			<div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
@@ -26,76 +26,67 @@
 			<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12"
 				style="padding-left: 60px; padding-right: 60px;">
 				<div class="row mb-4">
-					<h2 class="col-12 tm-text-primary">Related Videos</h2>
+					<h2 class="col-12 tm-text-primary">Phim mới nổi bật</h2>
 				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5"
+					style="width: 400px;">
+					<h5 class="tm-text-secondary"
+						style="white-space: nowrap; overflow: hidden;">
+						${video.title}</h5>
 					<figure class="effect-ming tm-video-item">
-						<img src="img/img-01.jpg" alt="Image" class="img-fluid">
+						<iframe id="tm-video"
+							src="https://www.youtube.com/embed/${video.href}"></iframe>
 						<figcaption
 							class="d-flex align-items-center justify-content-center">
-							<h2>Hangers</h2>
-							<a href="#">View more</a>
+							<h2>Xem Thêm</h2>
+							<a href="<c:url value ='/video?action=watch&id=${video.href}'/>">Xem
+								Thêm</a>
 						</figcaption>
 					</figure>
 					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">12 Oct 2020</span> <span>12,460
-							views</span>
+						<span class="tm-text-gray-light">${video.shares}Share </span> <span>
+							${video.view}views</span>
 					</div>
 				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5"
+					style="width: 400px;">
+					<h5 class="tm-text-secondary"
+						style="white-space: nowrap; overflow: hidden;">
+						${video.title}</h5>
 					<figure class="effect-ming tm-video-item">
-						<img src="img/img-02.jpg" alt="Image" class="img-fluid">
+						<iframe id="tm-video"
+							src="https://www.youtube.com/embed/${video.href}"></iframe>
 						<figcaption
 							class="d-flex align-items-center justify-content-center">
-							<h2>Perfumes</h2>
-							<a href="#">View more</a>
+							<h2>Xem Thêm</h2>
+							<a href="<c:url value ='/video?action=watch&id=${video.href}'/>">Xem
+								Thêm</a>
 						</figcaption>
 					</figure>
 					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">18 Oct 2020</span> <span>11,402
-							views</span>
+						<span class="tm-text-gray-light">${video.shares}Share </span> <span>
+							${video.view}views</span>
 					</div>
 				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5"
+					style="width: 400px;">
+					<h5 class="tm-text-secondary"
+						style="white-space: nowrap; overflow: hidden;">
+						${video.title}</h5>
 					<figure class="effect-ming tm-video-item">
-						<img src="img/img-03.jpg" alt="Image" class="img-fluid">
+						<iframe id="tm-video"
+							src="https://www.youtube.com/embed/${video.href}"></iframe>
 						<figcaption
 							class="d-flex align-items-center justify-content-center">
-							<h2>Clocks</h2>
-							<a href="#">View more</a>
+							<h2>Xem Thêm</h2>
+							<a href="<c:url value ='/video?action=watch&id=${video.href}'/>">Xem
+								Thêm</a>
 						</figcaption>
 					</figure>
 					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">16 Oct 2020</span> <span>9,906
-							views</span>
-					</div>
-				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-					<figure class="effect-ming tm-video-item">
-						<img src="img/img-04.jpg" alt="Image" class="img-fluid">
-						<figcaption
-							class="d-flex align-items-center justify-content-center">
-							<h2>Plants</h2>
-							<a href="#">View more</a>
-						</figcaption>
-					</figure>
-					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">12 Oct 2020</span> <span>16,100
-							views</span>
-					</div>
-				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-					<figure class="effect-ming tm-video-item">
-						<img src="img/img-08.jpg" alt="Image" class="img-fluid">
-						<figcaption
-							class="d-flex align-items-center justify-content-center">
-							<h2>New York</h2>
-							<a href="#">View more</a>
-						</figcaption>
-					</figure>
-					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">9 Sep 2020</span> <span>11,300
-							views</span>
+						<span class="tm-text-gray-light">${video.shares}Share </span> <span>
+							${video.view}views</span>
 					</div>
 				</div>
 			</div>
@@ -103,18 +94,27 @@
 		<div class=" mb-3 tm-gallery">
 
 			<div class="tm-bg-gray tm-video-details">
-				<p class="mb-4"></p>
 				<div class=" mb-5">
-					<div class="btn-group" role="group" aria-label="Basic example">
-						<button type="button" class="btn btn-primary">Like</button>
-						<button type="button" class="btn btn-primary">Share</button>
-						<button type="button" class="btn btn-primary">DownLoad</button>
-					</div>
+					<c:if test="${ not empty sessionScope.currentUser}">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button id="likeOrUnlike" class="btn btn-primary">
+								<c:choose>
+									<c:when test="${flagLikeBtn == true}">
+										UnLike
+									</c:when>
+									<c:otherwise>Like</c:otherwise>
+								</c:choose>
+
+							</button>
+							<a class="btn btn-primary">Share</a> <a class="btn btn-primary">DownLoad</a>
+						</div>
+					</c:if>
 				</div>
+				<input id="videoInHdn" type="hidden" value="${video.href}">
 				<div class="mb-4 d-flex flex-wrap">
 					<div class="mr-4 mb-2">
-						<span class="tm-text-gray-dark">Resolution: </span><span
-							class="tm-text-primary">1920x1080</span>
+						<span class="tm-text-gray-dark">Resolution: </span>
+						<span class="tm-text-primary">1920x1080</span>
 					</div>
 					<div class="mr-4 mb-2">
 						<span class="tm-text-gray-dark">Format: </span><span
@@ -140,6 +140,22 @@
 
 	<!-- Footer -->
 	<%@ include file="/Common/Footer.jsp"%>
-
+	<script>
+		$('#likeOrUnlike').click(function() {
+			var videoId = $('#videoInHdn').val();
+			$.ajax({
+				url : 'video?action=like&id=' + videoId
+			}).then(function() {
+				var text = $('#likeOrUnlike').text();
+				if (text.indexOf('Like') != -1) {
+					$('#likeOrUnlike').text('Unlike');
+				} else {
+					$('#likeOrUnlike').text('Like');
+				}
+			}).fail(function(error) {
+				alert('Vui Lòng Thử Lại')
+			})
+		});
+	</script>
 </body>
 </html>

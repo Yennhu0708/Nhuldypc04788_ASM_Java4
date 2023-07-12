@@ -31,34 +31,46 @@ public class HistoryServiceImpl  implements HistoryService{
 	}
 
 	@Override
-	public History findUserIdAndVideoId(Integer userId, Integer videoId) {
-		return dao.findUserIdAndVideoId(userId, videoId);
+	public History findByUserIdAndVideoId(Integer userId, Integer videoId) {
+		return dao.findByUserIdAndVideoId(userId, videoId);
 	}
 
 	@Override
 	public History create(User user, Video video) {
-		History history = new History();
-		history.setUser(user);
-		history.setVideo(video);
-		history.setIsLiked(Boolean.FALSE);
-		return dao.create(history);
+		History existHistory =findByUserIdAndVideoId(user.getId(), video.getId());
+		if (existHistory == null) {
+			existHistory = new History();
+			existHistory.setUser(user);
+			existHistory.setVideo(video);
+			existHistory.setIsLiked(Boolean.FALSE);
+			existHistory.setViewedDate(new Timestamp(System.currentTimeMillis()));
+			return dao.create(existHistory);
+		}
+	
+		return existHistory;
 	}
 
 	@Override
 	public boolean updateLikeOrUnlike(User user, String videoHref) {
 		Video video = videoService.findByHref(videoHref);
-		History existHistory = findUserIdAndVideoId(user.getId(), video.getId());
+		History existHistory = findByUserIdAndVideoId(user.getId(), video.getId());
 		
 		if(existHistory.getIsLiked() == Boolean.FALSE) {
 			existHistory.setIsLiked(Boolean.TRUE);
 			existHistory.setLikedDate(new Timestamp(System.currentTimeMillis()));
 		}else {
 			existHistory.setIsLiked(Boolean.FALSE);
-			existHistory.setIsLiked(null);
+			existHistory.setLikedDate(null);
 		}
 		
-		History updateHistory =dao.update(existHistory);
+		History updateHistory = dao.update(existHistory);
 		return updateHistory != null ? true : false ;
+	}
+
+	@Override
+	public History findUserIdAndVideoId(Integer userId, Integer videoId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

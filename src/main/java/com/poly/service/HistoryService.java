@@ -9,7 +9,8 @@ import com.poly.entity.Video;
 public interface HistoryService {
 	List<History> findByUser(String username);
 	List<History> findByUserAndIsLiked(String username);
-	History findUserIdAndVideoId(Integer userId, Integer videoId);
+	History findByUserIdAndVideoId(Integer userId, Integer videoId);
 	History create (User user, Video video);
 	boolean updateLikeOrUnlike(User user, String videoHref);
+	History findUserIdAndVideoId(Integer userId, Integer videoId);
 }

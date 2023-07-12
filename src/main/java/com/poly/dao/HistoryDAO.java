@@ -8,7 +8,7 @@ public interface HistoryDAO {
 
 	List<History> findByUser(String username);
 	List<History> findByUserAndIsLiked(String username);
-	History findUserIdAndVideoId(Integer userId, Integer videoId);
+	History findByUserIdAndVideoId(Integer userId, Integer videoId);
 	History create (History entity);
 	History update (History entity);
 }
