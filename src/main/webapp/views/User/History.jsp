@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${sessionScope.currentUser.username}'s Favorites</title>
+<title>${sessionScope.currentUser.username}'s History</title>
 <%@ include file="/Common/Head.jsp"%>
 </head>
 <body>
@@ -15,7 +15,7 @@
 
 	<div class="container-fluid tm-container-content tm-mt-60">
 		<div class="row mb-4">
-			<h2 class="col-6 tm-text-primary">Phim Yêu Thích Của Bạn</h2>
+			<h2 class="col-6 tm-text-primary">Phim bạn đã xem</h2>
 			<div class="col-6 d-flex justify-content-end align-items-center">
 				<form action="" class="tm-text-primary">
 					Page <input type="text" value="1" size="1"
