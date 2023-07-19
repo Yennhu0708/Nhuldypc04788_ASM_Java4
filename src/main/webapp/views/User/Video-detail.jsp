@@ -12,92 +12,69 @@
 <body>
 	<!-- Header -->
 	<%@ include file="/Common/Header.jsp"%>
-
-	<div class="container-fluid tm-container-content tm-mt-60">
-		<div class="row mb-4">
+	<div class="container-fluid tm-container-content tm-mt-60 mb-5">
+		<div class="row">
 			<h2 class="col-12 tm-text-primary">${video.title}</h2>
 			<p>${video.description}</p>
-		</div>
-		<div class="row tm-mb-90">
-			<div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
-				<iframe id="tm-video"
-					src="https://www.youtube.com/embed/${video.href}"></iframe>
-			</div>
-			<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12"
-				style="padding-left: 60px; padding-right: 60px;">
-				<div class="row mb-4">
-					<h2 class="col-12 tm-text-primary">Phim mới nổi bật</h2>
-				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5"
-					style="width: 400px;">
-					<h5 class="tm-text-secondary"
-						style="white-space: nowrap; overflow: hidden;">
-						${video.title}</h5>
-					<figure class="effect-ming tm-video-item">
-						<iframe id="tm-video"
-							src="https://www.youtube.com/embed/${video.href}"></iframe>
-						<figcaption
-							class="d-flex align-items-center justify-content-center">
-							<h2>Xem Thêm</h2>
-							<a href="<c:url value ='/video?action=watch&id=${video.href}'/>">Xem
-								Thêm</a>
-						</figcaption>
-					</figure>
-					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">${video.shares}Share </span> <span>
-							${video.view}views</span>
-					</div>
-				</div>
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5"
-					style="width: 400px;">
-					<h5 class="tm-text-secondary"
-						style="white-space: nowrap; overflow: hidden;">
-						${video.title}</h5>
-					<figure class="effect-ming tm-video-item">
-						<iframe id="tm-video"
-							src="https://www.youtube.com/embed/${video.href}"></iframe>
-						<figcaption
-							class="d-flex align-items-center justify-content-center">
-							<h2>Xem Thêm</h2>
-							<a href="<c:url value ='/video?action=watch&id=${video.href}'/>">Xem
-								Thêm</a>
-						</figcaption>
-					</figure>
-					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">${video.shares}Share </span> <span>
-							${video.view}views</span>
+			<div class="col-lg-8">
+				<div class="frame9">
+					<div class="bbb mb-3 mt-3">
+						<iframe src="https://www.youtube.com/embed/${video.href}"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
 					</div>
 				</div>
 
-				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5"
-					style="width: 400px;">
-					<h5 class="tm-text-secondary"
-						style="white-space: nowrap; overflow: hidden;">
-						${video.title}</h5>
-					<figure class="effect-ming tm-video-item">
-						<iframe id="tm-video"
-							src="https://www.youtube.com/embed/${video.href}"></iframe>
-						<figcaption
-							class="d-flex align-items-center justify-content-center">
-							<h2>Xem Thêm</h2>
-							<a href="<c:url value ='/video?action=watch&id=${video.href}'/>">Xem
-								Thêm</a>
-						</figcaption>
-					</figure>
-					<div class="d-flex justify-content-between tm-text-gray">
-						<span class="tm-text-gray-light">${video.shares}Share </span> <span>
-							${video.view}views</span>
+			</div>
+			<div class="col-lg-4 mb-2">
+				<div class="scrollable-div">
+					<div class="input-group rounded">
+						<input type="search" class="form-control rounded"
+							placeholder="Search" aria-label="Search"
+							aria-describedby="search-addon" /> <span
+							class="input-group-text border-0" id="search-addon"> <i
+							class="fas fa-search"></i>
+						</span>
 					</div>
+					<div class="video-container mb-3 mt-3">
+						<!-- Video 1 -->
+						<iframe src="https://www.youtube.com/embed/uK65CKmpWSQ"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
+					<div class="video-container mb-3 mt-3">
+						<!-- Video 2 -->
+						<iframe src="https://www.youtube.com/embed/FxHdbyGDyBo"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
+					<div class="video-container mb-3 mt-3">
+						<!-- Video 3 -->
+						<iframe src="https://www.youtube.com/embed/HHsJxaLHsIU"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
+					<!-- Thêm video khác nếu cần -->
 				</div>
 			</div>
 		</div>
-		<div class=" mb-3 tm-gallery">
-
+		<div class="  mb-5 tm-gallery">
 			<div class="tm-bg-gray tm-video-details">
 				<div class=" mb-5">
+					<c:if test="${ empty sessionScope.currentUser}">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-secondary">Like</button>
+							<button type="button" class="btn btn-secondary">Share</button>
+							<button type="button" class="btn btn-secondary">DownLoad</button>
+						</div>
+					</c:if>
 					<c:if test="${ not empty sessionScope.currentUser}">
 						<div class="btn-group" role="group" aria-label="Basic example">
-							<button id="likeOrUnlike" class="btn btn-primary">
+							<button id="likeOrUnlike" class="btn btn-danger">
 								<c:choose>
 									<c:when test="${flagLikeBtn == true}">
 										UnLike
@@ -106,16 +83,13 @@
 								</c:choose>
 
 							</button>
-							<a class="btn btn-primary">Share</a> <a class="btn btn-primary">DownLoad</a>
+							<a class="btn btn-warning">Share</a> <a class="btn btn-success">DownLoad</a>
 						</div>
 					</c:if>
 				</div>
 				<input id="videoInHdn" type="hidden" value="${video.href}">
 				<div class="mb-4 d-flex flex-wrap">
-					<div class="mr-4 mb-2">
-						<span class="tm-text-gray-dark">Resolution: </span>
-						<span class="tm-text-primary">1920x1080</span>
-					</div>
+					<div class="mr-4 mb-2"></div>
 					<div class="mr-4 mb-2">
 						<span class="tm-text-gray-dark">Format: </span><span
 							class="tm-text-primary">MP4</span>

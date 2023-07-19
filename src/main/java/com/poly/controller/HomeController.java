@@ -62,7 +62,6 @@ public class HomeController extends HttpServlet {
 	private void doGetIndex(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		
 		List<Video> videos = videoService.findAll();
-		System.out.println(videos);
 		req.setAttribute("videos", videos);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/Index.jsp");
 		requestDispatcher.forward(req, resp);

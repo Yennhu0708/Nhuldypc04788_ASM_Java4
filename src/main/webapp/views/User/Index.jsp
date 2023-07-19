@@ -31,7 +31,7 @@
 				</h5>
 				
 					<figure class="effect-ming tm-video-item">
-						<img src="<c:url value = '/Templates/User/img/img-03.jpg'/>"
+						<img src="${video.poster}"
 							alt="Image" class="img-fluid">
 						<%-- <c:if test="${ not empty sessionScope.currentUser}"> --%>
 						<figcaption
@@ -48,8 +48,6 @@
 					</div>
 				</div>
 			</c:forEach>
-				
-			
 		</div>
 		<!-- row -->
 		<div class="row tm-mb-90">
