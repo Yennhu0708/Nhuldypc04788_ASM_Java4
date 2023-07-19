@@ -22,7 +22,8 @@
 
 				<div class="col-md-8 m-5">
 
-					<form action="Register" method="POST" class="row shadow-lg p-3" style="background-color: white;">
+					<form action="Register" method="POST" class="row shadow-lg p-3"
+						style="background-color: white;">
 
 						<div class="m-2 text-center">
 
@@ -63,10 +64,11 @@
 						</div>
 						<div class="col-md-12 m-2">
 
-							<label for="ag-password" class="form-label">Nhập Lại Mật Khẩu <span
-								class="text-danger">*</span></label> <input type="password"
-								class="form-control" placeholder="Nhập Lại Mật Khẩu"
-								id="ag-password" name="ag-password" required />
+							<label for="ag-password" class="form-label">Nhập Lại Mật
+								Khẩu <span class="text-danger">*</span>
+							</label> <input type="password" class="form-control"
+								placeholder="Nhập Lại Mật Khẩu" id="ag-password"
+								name="ag-password" required />
 
 							<div class="valid-feedback">Password validated</div>
 
@@ -84,10 +86,14 @@
 							<div class="valid-feedback">Email validated</div>
 
 							<div class="invalid-feedback">Vui Lòng Nhập Email</div>
+							
 						</div>
-
+						<c:if test="${not empty errorMessage}">
+								<p class="error">${errorMessage}</p>
+							</c:if>
 						<!-- submit button -->
 						<div class="col-md-12 m-2">
+
 							<button id="submitBtn" class="btn btn-info" type="submit">
 								Đăng Ký</button>
 

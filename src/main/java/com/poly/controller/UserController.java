@@ -94,16 +94,23 @@ public class UserController extends HttpServlet {
 		String password = req.getParameter("password");
 		String email = req.getParameter("email");
 
-		User user = userService.create(username, password, email);
+		if (userService.findByUsername(username) != null && userService.findByEmail(email) != null) {
+			// Nếu tên người dùng đã tồn tại, đặt thông báo lỗi vào request
+			req.setAttribute("errorMessage", "Tên người dùng đã tồn tại trong cơ sở dữ liệu!");
 
-		if (user != null) {
-			session.setAttribute(SessionAttr.Current_user, user);
-			resp.sendRedirect("Index");
+			// Chuyển hướng về trang đăng ký và hiển thị thông báo lỗi
+			req.getRequestDispatcher("/views/User/Register.jsp").forward(req, resp);
 
 		} else {
-			resp.sendRedirect("Register");
+			User user = userService.create(username, password, email);
 
+			if (user != null) {
+				session.setAttribute(SessionAttr.Current_user, user);
+				resp.sendRedirect("Index");
+
+			} else {
+				resp.sendRedirect("Register");
+			}
 		}
-
 	}
 }
