@@ -40,6 +40,9 @@
 									class="text-danger">*</span></label> <input type="text"
 									class="form-control" placeholder="Nguyễn Văn A" id="username"
 									name="username" required />
+								<c:if test="${param.error == 'UsernameAlreadyExists'}">
+									<p>Username đã tồn tại. Vui lòng chọn tên đăng nhập khác.</p>
+								</c:if>
 
 								<div class="valid-feedback">Username validated</div>
 
@@ -82,15 +85,17 @@
 								class="text-danger">*</span></label> <input type="email"
 								class="form-control" placeholder="Email" id="email" name="email"
 								required />
+							<c:if test="${param.error == 'EmailAlreadyExists'}">
+								<p>Email đã tồn tại. Vui lòng chọn email khác.</p>
+							</c:if>
+
 
 							<div class="valid-feedback">Email validated</div>
 
 							<div class="invalid-feedback">Vui Lòng Nhập Email</div>
-							
+
 						</div>
-						<c:if test="${not empty errorMessage}">
-								<p class="error">${errorMessage}</p>
-							</c:if>
+					
 						<!-- submit button -->
 						<div class="col-md-12 m-2">
 

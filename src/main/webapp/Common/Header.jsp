@@ -12,7 +12,7 @@
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<c:url value='/index'/>">
 					<i class="fas fa-film mr-2"></i>
-					SARAH VIDEOS
+					VIETSUB PHIM
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
