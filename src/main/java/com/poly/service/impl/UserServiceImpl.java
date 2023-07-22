@@ -39,6 +39,12 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User resetPassword(String email) {
+		User existUser = findByEmail(email);
+		if (existUser != null) {
+				String newPass = String.valueOf((int) (Math.random() * ((9999-1000)+1)+1000));
+				existUser.setPassword(newPass);
+				return dao.update(existUser);
+		}
 		return null;
 	}
 

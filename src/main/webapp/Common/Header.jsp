@@ -11,7 +11,7 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<c:url value='/index'/>">
-					<i class="fas fa-film mr-2"></i>
+					<i class="fa-brands fa-docker"></i>
 					VIETSUB PHIM
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -48,7 +48,7 @@
 									<a class="nav-link nav-link-3" href="Register">Register</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link nav-link-4" href="Forgot Password">Forgot Password</a>
+									<a class="nav-link nav-link-4" href="Forgotpassword">Forgot Password</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
@@ -61,13 +61,13 @@
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="<c:url value = '/Templates/User/img/hero.jpg'/>" class="d-block w-100" alt="...">
+					<img src="<c:url value = '/Templates/User/img/hero.jpg'/>" class="d-block w-100" alt="..." style="Height: 500px">
 				</div>
 				<div class="carousel-item">
-					<img src="<c:url value = '/Templates/User/img/hero.jpg'/>" class="d-block w-100" alt="...">
+					<img src="<c:url value = '/Templates/User/img/hero1.jpg'/>" class="d-block w-100" alt="..." style="Height: 500px">
 				</div>
 				<div class="carousel-item">
-					<img src="<c:url value = '/Templates/User/img/hero.jpg'/>" class="d-block w-100" alt="...">
+					<img src="<c:url value = '/Templates/User/img/hero2.jpg'/>" class="d-block w-100" alt="..." style="Height: 500px">
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

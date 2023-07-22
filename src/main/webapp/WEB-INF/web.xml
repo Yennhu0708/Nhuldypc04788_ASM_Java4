@@ -8,7 +8,25 @@
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
-
+	<!--Gửi mail  -->
+	<context-param>
+		<param-name>host</param-name>
+		<param-value>smtp.gmail.com</param-value>
+	</context-param>
+	<context-param>
+		<param-name>port</param-name>
+		<param-value>587</param-value>
+	</context-param>
+	<context-param>
+		<param-name>user</param-name>
+		<param-value>nhuldypc04788@fpt.edu.vn</param-value>
+	</context-param>
+	<context-param>
+		<param-name>pass</param-name>
+		<param-value>ijuijvvycvtoeiyf</param-value>
+	</context-param>
+	
+	
 	<welcome-file-list>
 		<welcome-file>Redirect.jsp</welcome-file>
 	</welcome-file-list>
