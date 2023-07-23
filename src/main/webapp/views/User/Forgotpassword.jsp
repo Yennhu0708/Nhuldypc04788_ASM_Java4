@@ -22,7 +22,7 @@
 
 				<div class="col-md-8 m-5">
 
-					<form action="Forgotpassword" method="POST" class="row shadow-lg p-3"
+					<div class="row shadow-lg p-3"
 						style="background-color: white;">
 
 						<div class="m-2 text-center">
@@ -32,26 +32,25 @@
 						</div>
 						<!-- Email -->
 						<div class="col-md-12 m-2">
-
-							<label for="email" class="form-label">Email <span
-								class="text-danger">*</span></label> <input type="email"
-								class="form-control" placeholder="Email" id="email" name="email"
-								required />
-							<%-- <c:if test="${param.error != 'EmailAlreadyExists'}">
-								<p>Email không tồn tại. Vui lòng nhập email khác.</p>
-							</c:if> --%>
-							<div class="valid-feedback">Email validated</div>
-							<div class="invalid-feedback">Vui Lòng Nhập Email</div>
+						
+								<label for="email" class="form-label">Email <span
+									class="text-danger">*</span></label> <input type="email"
+									class="form-control" placeholder="Email" id="email" name="email"
+									required />
+								<div class="valid-feedback">Email validated</div>
+								<div class="invalid-feedback">Vui Lòng Nhập Email</div>
+								<!-- submit button -->
+								<div class="col-md-12 m-2">
+									<button id="sendBtn" class="btn btn-info" type="submit">
+										Gửi Mail</button>
+										
+										
+								</div>
+								<h5 style="color: red" id="messageReturn">sssss</h5>
+							
 						</div>
 
-						<!-- submit button -->
-						<div class="col-md-12 m-2">
-
-							<button id="submitBtn" class="btn btn-info" type="submit">
-								Gửi Mail</button>
-
-						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -61,4 +60,23 @@
 	<%@ include file="/Common/Footer.jsp"%>
 
 </body>
+<script type="text/javascript">
+    $('#sendBtn').click(function() {
+        $('#messageReturn').text(''); 
+        var email = $('#email').val();
+        var formData = {'email': email};
+        $.ajax({
+            url: 'Forgotpassword', 
+            type: 'POST', 
+            data: formData
+        }).then(function(data) { 
+            $('#messageReturn').text('Đã Gửi lại mật khẩu, Vui lòng đăng nhập lại');
+            setTimeout(function() {
+                window.location.href = 'http://localhost:8080/Nhuldypc04788_ASM_SOF301/Index'; 
+            }, 5 * 1000);
+        }).fail(function(error) {
+            $('#messageReturn').text('Email mail chưa được đăng ký, Vui lòng nhập lại Email'); 
+        });
+    });
+</script>
 </html>

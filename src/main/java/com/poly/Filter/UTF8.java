@@ -1,4 +1,4 @@
-package Filter;
+package com.poly.Filter;
 
 
 import javax.servlet.Filter;
@@ -15,6 +15,5 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 	request.setCharacterEncoding("utf-8");
 	response.setCharacterEncoding("utf-8");
 	reChain.doFilter(request, response);
-	System.out.println("đã nhận");
 }
 }

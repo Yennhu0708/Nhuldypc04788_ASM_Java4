@@ -127,7 +127,7 @@ public class UserController extends HttpServlet {
 		if (user != null) {
 
 			// Gửi email đăng kí thành công
-			emailService.SendEmail(getServletContext(), user, username);
+			emailService.SendEmail(getServletContext(), user, "welcome");
 
 			session.setAttribute(SessionAttr.Current_user, user);
 			response.sendRedirect("Index");
@@ -147,6 +147,17 @@ public class UserController extends HttpServlet {
 
 	private void doPostForgotpassword(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setContentType("application/json");
+		
+		String email = req.getParameter("email");
+		
+		User userWithNewPass = userService.resetPassword(email);
+		if (userWithNewPass != null) {
+			emailService.SendEmail(getServletContext(), userWithNewPass, "forgot");
+			resp.setStatus(204);
+		} else {
+			resp.setStatus(400);
+		}
 
 	};
 
