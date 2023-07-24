@@ -9,6 +9,7 @@ public interface UserDAO {
 	User findById(Integer id);
 	User findByEmail(String email);
 	User findByUsername(String username);
+	User findByPassword(String password);
 	User findByUsernameandPassword(String username, String password);
 	List<User> findAll();
 	List<User> findAll(int pageNumber, int pageSize);

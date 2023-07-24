@@ -27,7 +27,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-@WebServlet(urlPatterns = { "/Login", "/Logout", "/Register", "/Forgotpassword" })
+@WebServlet(urlPatterns = { "/Login", "/Logout", "/Register", "/Forgotpassword", "/ChangePass" })
 public class UserController extends HttpServlet {
 
 	private static final long serialVersionUID = -5860351843059541642L;
@@ -47,6 +47,9 @@ public class UserController extends HttpServlet {
 			break;
 		case "/Forgotpassword":
 			doGetForgotpassword(req, resp);
+			break;
+		case "/ChangePass":
+			doGetChangePass(req, resp);
 			break;
 		case "/Logout":
 			doGetLogout(session, req, resp);
@@ -70,6 +73,10 @@ public class UserController extends HttpServlet {
 		case "/Forgotpassword":
 			doPostForgotpassword(req, resp);
 			break;
+		case "/ChangePass":
+			doPostChangePass(session, req, resp);
+			break;
+
 		}
 
 	}
@@ -148,9 +155,9 @@ public class UserController extends HttpServlet {
 	private void doPostForgotpassword(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("application/json");
-		
+
 		String email = req.getParameter("email");
-		
+
 		User userWithNewPass = userService.resetPassword(email);
 		if (userWithNewPass != null) {
 			emailService.SendEmail(getServletContext(), userWithNewPass, "forgot");
@@ -161,11 +168,46 @@ public class UserController extends HttpServlet {
 
 	};
 
+	// Đổi Mật Khẩu
+	private void doGetChangePass(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/ChangePass.jsp");
+		requestDispatcher.forward(req, resp);
+	};
+
+	private void doPostChangePass(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		User currentUser = (User) session.getAttribute(SessionAttr.Current_user);
+
+		String oldPassword = req.getParameter("oldPassword");
+		String newPassword = req.getParameter("newPassword");
+		String oldPass = currentUser.getPassword();
+		
+	
+
+		if (oldPass.equals(oldPassword) ) {
+
+			User user = userService.changePassword(oldPassword, newPassword);
+
+			if (user != null) {
+				
+				session.removeAttribute(SessionAttr.Current_user);
+				resp.sendRedirect("Login");
+			} else {
+				resp.sendRedirect("ChangePass");
+			}
+		} else {
+			resp.sendRedirect("ChangePass");
+		}
+
+
+	}
+
 	// Đăng Xuất
 	private void doGetLogout(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		session.removeAttribute(SessionAttr.Current_user);
-		resp.sendRedirect("Index");
+		req.getRequestDispatcher("/views/User/Index.jsp").forward(req, resp);
 	}
 
 }

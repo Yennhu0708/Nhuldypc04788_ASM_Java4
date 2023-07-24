@@ -43,4 +43,10 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDAO {
 		return super.findAll(User.class, true, pageNumber, pageSize);
 	}
 
+	@Override
+	public User findByPassword(String password) {
+		String sql = "SELECT o FROM User o WHERE o.password = ?0";
+		return super.findOne(User.class, sql, password);
+	}
+
 }

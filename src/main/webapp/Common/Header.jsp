@@ -10,7 +10,7 @@
 		</div>
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="<c:url value='/index'/>">
+				<a class="navbar-brand" href="Index">
 					<i class="fa-brands fa-docker"></i>
 					VIETSUB PHIM
 				</a>
@@ -30,6 +30,9 @@
 								</li>
 								<li class="nav-item">
 									<a class="nav-link nav-link-1" href="Favorites">My favorites</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link nav-link-1" href="ChangePass">Change Password</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link nav-link-2" href="History">My History</a>

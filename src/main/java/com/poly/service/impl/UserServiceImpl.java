@@ -2,20 +2,19 @@ package com.poly.service.impl;
 
 import java.util.List;
 
-
 import com.poly.dao.UserDAO;
 import com.poly.dao.impl.UserDaoImpl;
 import com.poly.entity.User;
 import com.poly.service.UserService;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
-		private UserDAO dao;
-		
-		public UserServiceImpl() {
-			dao = new UserDaoImpl();
-		}
-		
+	private UserDAO dao;
+
+	public UserServiceImpl() {
+		dao = new UserDaoImpl();
+	}
+
 	@Override
 	public User findById(Integer id) {
 		return dao.findById(id);
@@ -32,8 +31,13 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public User findByPassword(String password) {
+		return dao.findByPassword(password);
+	}
+
+	@Override
 	public User login(String username, String password) {
-		//Giải mã password
+		// Giải mã password
 		return dao.findByUsernameandPassword(username, password);
 	}
 
@@ -41,9 +45,19 @@ public class UserServiceImpl implements UserService{
 	public User resetPassword(String email) {
 		User existUser = findByEmail(email);
 		if (existUser != null) {
-				String newPass = String.valueOf((int) (Math.random() * ((9999-1000)+1)+1000));
-				existUser.setPassword(newPass);
-				return dao.update(existUser);
+			String newPass = String.valueOf((int) (Math.random() * ((9999 - 1000) + 1) + 1000));
+			existUser.setPassword(newPass);
+			return dao.update(existUser);
+		}
+		return null;
+	}
+
+	@Override
+	public User changePassword(String password, String newPass) {
+		User user = findByPassword(password);
+		if (user != null) {
+			user.setPassword(newPass);
+			return dao.update(user);
 		}
 		return null;
 	}
@@ -60,9 +74,9 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User create(String username, String password, String email) {
-		User  newUser = new User();
+		User newUser = new User();
 		newUser.setUsername(username);
-		newUser.setPassword(password); //Có Thể mã hóa bcrypt md5
+		newUser.setPassword(password); // Có Thể mã hóa bcrypt md5
 		newUser.setEmail(email);
 		newUser.setIsAdmin(Boolean.FALSE);
 		newUser.setIsActive(Boolean.TRUE);
@@ -71,7 +85,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User update(User entity) {
-		return update(entity);
+		return dao.update(entity);
 	}
 
 	@Override
