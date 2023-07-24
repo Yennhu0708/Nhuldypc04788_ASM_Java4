@@ -5,6 +5,9 @@ TemplateMo 556 Catalog-Z
 https://templatemo.com/tm-556-catalog-z
 
 */
+body {
+  font-family: 'Playfair Display', sans-serif;
+}
 
 #loader-wrapper {
     position: fixed;
@@ -208,6 +211,8 @@ a.tm-text-primary:hover { color:#666666; }
     border: 1px solid #CCCCCC;
     background: #f4f4f4;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .nav-item { margin-right: 30px; }
@@ -352,20 +357,15 @@ p, .tm-text-gray { color: #999; }
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
+    width: 30px;
     height: 60px;
     font-size: 1.1rem;
     color: #999;
-    background-color: #EEEEEE;
     margin: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease;
 }
 
 .tm-paging-link:hover,
 .tm-paging-link.active {
-    background-color: #009999;
     color: #fff; 
 }
 

@@ -28,7 +28,7 @@ public class HomeController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1517115637537021552L;
-
+	private static final int VIDEO_MAX_PAGE_SIZE = 6;
 	private VideoService videoService = new VideoServiceImpl();
 	private HistoryService  historyService = new HistoryServiceImpl();
 
@@ -60,11 +60,23 @@ public class HomeController extends HttpServlet {
 	}
 
 	private void doGetIndex(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+			List<Video> countVideo = videoService.findAll();
+			int maxPage = (int) Math.ceil(countVideo.size()/(double)VIDEO_MAX_PAGE_SIZE);
+			req.setAttribute("maxPage", maxPage);
+			
+		List<Video> videos ;
+		String pageNum = req.getParameter("page");
 		
-		List<Video> videos = videoService.findAll();
+		if (pageNum == null || Integer.valueOf(pageNum) > maxPage ) {
+				videos = videoService.findAll(1,VIDEO_MAX_PAGE_SIZE);
+				req.setAttribute("currentPage", 1);
+		}else {
+			videos = videoService.findAll(Integer.valueOf(pageNum),VIDEO_MAX_PAGE_SIZE);
+			req.setAttribute("currentPage", Integer.valueOf(pageNum));
+		}
+		
 		req.setAttribute("videos", videos);
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/Index.jsp");
-		requestDispatcher.forward(req, resp);
+		req.getRequestDispatcher("/views/User/Index.jsp").forward(req, resp);
 		
 	}
 	private void doGetFavorites(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
