@@ -214,7 +214,14 @@ a.tm-text-primary:hover { color:#666666; }
     margin-left: 10px;
     margin-right: 10px;
 }
-
+.navbar {
+    position: relative;
+    z-index: 2;
+}
+.carousel-inner {
+    position: relative;
+    z-index: 1;
+}
 .nav-item { margin-right: 30px; }
 .nav-item:last-child { margin-right: 0; }
 
@@ -696,3 +703,16 @@ select:not([multiple]) {
 	background-color: #f44336;
   }
     .tm-social-links li { margin-right: 3px; }
+    
+  .subnav {
+  display: none;
+  position: absolute; 
+  background-color: #343a40; 
+  padding: 10px; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+}
+
+/* Khi hover vào phần tử cha, hiển thị subnav */
+.nav-item:hover .subnav {
+  display: block;
+}

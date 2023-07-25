@@ -1,5 +1,6 @@
 package com.poly.controller;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -27,7 +28,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-@WebServlet(urlPatterns = { "/Login", "/Logout", "/Register", "/Forgotpassword", "/ChangePass" })
+@WebServlet(urlPatterns = { "/Login", "/Logout", "/Register", "/Forgotpassword", "/ChangePass", "/Profile" })
 public class UserController extends HttpServlet {
 
 	private static final long serialVersionUID = -5860351843059541642L;
@@ -50,6 +51,9 @@ public class UserController extends HttpServlet {
 			break;
 		case "/ChangePass":
 			doGetChangePass(req, resp);
+			break;
+		case "/Profile":
+			doGetProfile(session, req, resp);
 			break;
 		case "/Logout":
 			doGetLogout(session, req, resp);
@@ -182,15 +186,13 @@ public class UserController extends HttpServlet {
 		String oldPassword = req.getParameter("oldPassword");
 		String newPassword = req.getParameter("newPassword");
 		String oldPass = currentUser.getPassword();
-		
-	
 
-		if (oldPass.equals(oldPassword) ) {
+		if (oldPass.equals(oldPassword)) {
 
 			User user = userService.changePassword(oldPassword, newPassword);
 
 			if (user != null) {
-				
+
 				session.removeAttribute(SessionAttr.Current_user);
 				resp.sendRedirect("Login");
 			} else {
@@ -200,7 +202,20 @@ public class UserController extends HttpServlet {
 			resp.sendRedirect("ChangePass");
 		}
 
+	}
 
+	// Chỉnh sửa thông tin
+	private void doGetProfile(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		User user = (User) session.getAttribute(SessionAttr.Current_user);
+		System.out.println(user);
+		
+		String username = user.getUsername();
+		String email = user.getEmail();
+		
+		req.setAttribute("username", username);
+		req.setAttribute("email", email);
+		req.getRequestDispatcher("/views/User/Profile.jsp").forward(req, resp);
 	}
 
 	// Đăng Xuất
