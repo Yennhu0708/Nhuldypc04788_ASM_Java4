@@ -11,12 +11,12 @@ public class StastDaoImpl extends AbstractDao<Object[]> implements StatsDAO{
 
 	@Override
 	public List<VideoLikeInfo> findVideoLikeInfo() {
-			String sql = "Select v.id, v.title, v.href, sum(cast(h.isLiked as int)) as totalLike"
-					+ "From Video v left join history  h on v.id = h.videoId"
-					+ "where v.isActive = 1"
-					+ "group by v.id, v.title, v.href"
-					+ "order by sum(cast(h.isLiked as int)) desc";
-			List<Object[]> objects = super.findManyByNativeQuery(Object[].class, sql);
+			String sql = "Select v.id, v.title, v.href, sum(cast(h.isLiked as int)) as totalLike "
+					+ "From Video v left join history h on v.id = h.videoId "
+					+ "where v.isActive = 1 "
+					+ "group by v.id, v.title, v.href "
+					+ "order by sum(cast(h.isLiked as int)) desc ";
+			List<Object[]> objects = super.findManyByNativeQuery(sql);
 			List<VideoLikeInfo> result = new ArrayList<>();
 			objects.forEach(object -> {
 				VideoLikeInfo videoLikeInfo = setDataVideoLikeInfo(object);
