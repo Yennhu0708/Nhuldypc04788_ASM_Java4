@@ -12,4 +12,8 @@ public interface VideoService {
 	Video create (Video entity);
 	Video update (Video entity);
 	Video delete (String href);
+
+	Video updateVideoEdit(Integer id, String title, String href, String mota, String poster, boolean status);
+
+	Video createNewVideo(String addTitle, String addHref, String addMota, String addPoster, boolean addStatus);
 }

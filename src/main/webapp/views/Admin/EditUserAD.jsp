@@ -46,7 +46,7 @@
 											<br>
 											<button type="submit" class="btn btn-outline-info">Lưu
 												Thông Tin</button>
-											<button type="submit" class="btn btn-outline-info m-3">Làm
+											<button type="submit" class="btn btn-outline-success m-3">Làm
 												Mới</button>
 
 

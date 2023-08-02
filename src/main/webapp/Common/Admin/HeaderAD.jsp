@@ -67,7 +67,7 @@
 								src="<c:url value ='Templates/Amind/assets/images/users/1.jpg'/>"
 								alt="user" class="profile-pic me-2">Markarn Doe
 						</a>
-							<ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
+						
 						</li>
 					</ul>
 				</div>
@@ -100,18 +100,17 @@
 								class="hide-menu">Thông Tin Video</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="" aria-expanded="false"><i
+							href="CreateVideo" aria-expanded="false"><i
 								class="me-3 fa fa-columns" aria-hidden="true"></i><span
-								class="hide-menu">Chỉnh Sửa Video</span></a></li>
+								class="hide-menu">Thêm Video Mới</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="" aria-expanded="false"><i
 								class="me-3 fa fa-info-circle" aria-hidden="true"></i><span
 								class="hide-menu">Error 404</span></a></li>
 						<li class="text-center p-20 upgrade-btn"><a
-							href="https://www.wrappixel.com/templates/monsteradmin/"
-							class="btn btn-danger text-white mt-4" target="_blank">Upgrade
-								to Pro</a></li>
+							href="Logout"
+							class="btn btn-danger text-white mt-4" target="_blank">Toát</a></li>
 					</ul>
 
 				</nav>
@@ -124,15 +123,15 @@
 			<div class="page-breadcrumb">
 				<div class="row align-items-center">
 					<div class="col-md-6 col-8 align-self-center">
-						<h3 class="page-title mb-0 p-0">Home</h3>
+						<h3 class="page-title mb-0 p-0">Trang Chủ</h3>
 						<div class="d-flex align-items-center">
 						</div>
 					</div>
 					<div class="col-md-6 col-4 align-self-center">
 						<div class="text-end upgrade-btn">
-							<a href="https://www.wrappixel.com/templates/monsteradmin/"
+							<a href="Index"
 								class="btn btn-success d-none d-md-inline-block text-white"
-								target="_blank">Upgrade to Pro</a>
+								target="_blank">Quay Lại</a>
 						</div>
 					</div>
 				</div>

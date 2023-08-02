@@ -52,5 +52,37 @@ public class VideoServiceImpl implements VideoService {
 		entity.setIsActive(Boolean.FALSE);
 		return dao.update(entity);
 	}
+	@Override
+	public Video updateVideoEdit(Integer id, String title, String href, String mota, String poster, boolean status) {
+		Video chkid = findById(id);
+
+		if (chkid != null) {
+			chkid.setTitle(title);
+			chkid.setHref(href);
+			chkid.setDescription(mota);
+			chkid.setPoster(poster);
+			chkid.setIsActive(status);
+			return dao.update(chkid);
+		}
+		return null;
+	}
+	@Override
+	public Video createNewVideo(String addTitle, String addHref, String addMota, String addPoster, boolean addStatus) {
+		Video chkHref = findByHref(addHref);
+		if (chkHref == null) {
+			chkHref = new Video();
+			
+			chkHref.setTitle(addTitle);
+			chkHref.setHref(addHref);
+			chkHref.setDescription(addMota);
+			chkHref.setPoster(addPoster);
+			chkHref.setIsActive(addStatus);	
+			chkHref.setShares(0);
+			chkHref.setView(0);
+			return dao.create(chkHref);
+			
+	}
+		return chkHref;
+	}
 
 }
