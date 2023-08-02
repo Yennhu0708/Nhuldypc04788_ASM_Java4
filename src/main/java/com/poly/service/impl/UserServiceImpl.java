@@ -84,15 +84,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(User entity) {
-		return dao.update(entity);
+	public User updateEditUser(String username, String password, String email) {
+		User user = findByUsername(username);
+		user.setEmail(email);
+		return dao.update(user);
 	}
 
 	@Override
 	public User delete(String username) {
 		User user = dao.findByUsername(username);
-		user.setIsActive(Boolean.FALSE);
 		return dao.update(user);
+	}
+
+	@Override
+	public User update(User entity) {
+		return update(entity);
 	}
 
 }
