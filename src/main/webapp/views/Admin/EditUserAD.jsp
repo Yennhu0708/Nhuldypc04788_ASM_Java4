@@ -31,10 +31,11 @@
 						<div
 							class="row d-flex justify-content-center align-items-center h-100">
 
-							<div class="col col-lg-6 mb-4 mb-lg-0">
+							<div class="col col-lg-12 mb-4 mb-lg-0">
 
-								<div class="card mb-3" style="border-radius: .5rem;">
+								<div class="card mb-3" style="border-radius: 5rem;">
 
+		
 									<div name="editCheck" class="row g-0">
 
 										<div
@@ -44,11 +45,8 @@
 											<img src='<c:url value='/Templates/User/img/logo.png' />'
 												alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
 											<br>
-											<button type="submit" class="btn btn-outline-info">Lưu
-												Thông Tin</button>
-											<button type="submit" class="btn btn-outline-success m-3">Làm
-												Mới</button>
-
+											<button type="submit" class="btn btn-outline-info">Lưu Thông Tin</button>
+											<button type="submit" class="btn btn-outline-success m-3">Làm Mới</button>
 
 										</div>
 
@@ -80,6 +78,31 @@
 														<input type="text" class="form-control " name="email"
 															placeholder="email" value="${user.email}">
 													</div>
+													<div class="col-6 mb-3">
+														<h6>Status:</h6>
+															
+																<div class="form-check form-check-inline">
+																	<label class="form-check-label"> <input
+																		type="radio" ${user.isActive == true ? 'checked' : ''}
+																		class="form-check-input" name="status"
+																		id="membershipRadios1" value="true" checked>
+																		Active
+																	</label>
+																</div>
+															
+																<div class="form-check  form-check-inline">
+																	<label class="form-check-label"> <input
+																		type="radio"
+																		${user.isActive == false ? 'checked' : ''}
+																		class="form-check-input" name="status"
+																		id="membershipRadios2" value="false">
+																		In-Active
+																	</label>
+																</div>
+															
+														
+													</div>
+
 												</div>
 
 												<hr class="mt-0 mb-4">

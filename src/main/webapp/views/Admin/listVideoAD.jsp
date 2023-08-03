@@ -24,45 +24,47 @@
 		data-header-position="absolute" data-boxed-layout="full">
 		
 		<div class="page-wrapper">
-		<form action="" method="Post">
-			<div class="container-fluid">
-				<div class="row">
-					<!-- column -->
-					<div class="col-sm-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">Thống kê danh sách video</h4>
-								<div class="table-responsive ">
-									<table class="table user-table no-wrap" id="userTable">
-										<thead>
-											<tr>
-												<th class="border-top-0">Id</th>
-												<th class="border-top-0">Title</th>
-												<th class="border-top-0">Href</th>
-												<th class="border-top-0">Total Like</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${videos}" var="item">
-												<tr>
-													<td>${item.videoId}</td>
-													<td>${item.tille}</td>
-													<td> <a href = "video?action=watch&id=${item.href}" >${item.href}</a></td>
+
+		  <form action="UserList" method="post">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- column -->
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Danh Sách Video</h4>
+                                    <div class="table-responsive">
+                                        <table class="table user-table no-wrap" id="userTable">
+                                            <thead>
+                                            <tr>
+                                                <th class="border-top-0">Id</th>
+                                                <th class="border-top-0">Tên Video</th>
+                                                <th class="border-top-0">Href</th>
+                                                <th class="border-top-0">Lượt thích</th>
+                                                <th class="border-top-0">#</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${videos}" var="item">
+                                                <tr>
+                                                    <td>${item.videoId}</td>
+                                                    <td>${item.tille}</td>
+                                                    <td> <a href = "video?action=watch&id=${item.href}" >${item.href}</a></td>
 													<td>${item.totalLike}</td>
 													<td><a href="EditVideo?id=${item.videoId}" class="btn btn-outline-info">Edit</a></td>
-												</tr>
-											</c:forEach>
-
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-			<!-- End Page wrapper  -->
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Page wrapper  -->
+            </form>
 		</div>
 		</div>
 		<script>

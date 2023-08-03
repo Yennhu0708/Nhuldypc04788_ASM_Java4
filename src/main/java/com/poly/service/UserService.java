@@ -30,5 +30,10 @@ public interface UserService {
 	
 	User delete (String username);
 	
-	User updateEditUser(String username, String password, String email);
+	User updateEditUser(String username, String password, String email,boolean getStatus);
+	
+	List<User> findAllTwo();
+	
+	List<User>  findUsersLikedVideoByVideoHref(String href);
+
 }

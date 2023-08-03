@@ -5,8 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
+import com.poly.constrant.nameStored;
+
+
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name= nameStored.FIND_USER_LIKED_VIDEO_BY_VIDEO_HREF,
+			procedureName = "sp_selectUserLikedVideoByVideoHref",
+			resultClasses = {User.class},
+			parameters = @StoredProcedureParameter(name = "videoHref", type=String.class)) 
+})
 @Entity
 @Table(name = "`user`")
 		public class User {

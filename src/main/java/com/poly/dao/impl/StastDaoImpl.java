@@ -6,6 +6,7 @@ import java.util.List;
 import com.poly.dao.AbstractDao;
 import com.poly.dao.StatsDAO;
 import com.poly.dio.VideoLikeInfo;
+import com.poly.entity.User;
 
 public class StastDaoImpl extends AbstractDao<Object[]> implements StatsDAO{
 
@@ -40,5 +41,11 @@ public class StastDaoImpl extends AbstractDao<Object[]> implements StatsDAO{
 		return videoLikeInfo;
 		
 	}
+
+
+
+
+
+
 
 }

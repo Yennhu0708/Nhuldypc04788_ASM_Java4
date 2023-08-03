@@ -1,9 +1,11 @@
 package com.poly.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 import javax.persistence.TypedQuery;
 
 import com.poly.Util.JpaUtil;
@@ -48,6 +50,14 @@ public class AbstractDao<T>  {
 			query.setMaxResults(pageSize);
 			return query.getResultList();
 		}
+		
+		public List<T> findAllTwo(Class<T> clazz) {
+		    String entityName = clazz.getSimpleName();
+		    String sql = "SELECT o FROM " + entityName + " o";
+		    TypedQuery<T> query = entityManager.createQuery(sql, clazz);
+		    return query.getResultList();
+		}
+		
 		//SELECT * FROM User o WHERE o.username = ? and o.password = ?1;
 		//	Object... params có độ dài biến đổi bao nhiêu cũng được
 		public T findOne(Class<T> clazz, String sql, Object... params) {
@@ -119,4 +129,11 @@ public class AbstractDao<T>  {
 					throw new RuntimeException(e);
 				}
 		}
+			//Hàm Này dùng để call Stored
+			@SuppressWarnings("unchecked")
+			public List<T> callStored(String nameStored, Map<String, Object> params){
+				StoredProcedureQuery query=entityManager.createNamedStoredProcedureQuery(nameStored);
+				params.forEach((key, value) -> query.setParameter(key, value));
+				return (List<T>) query.getResultList();
+			}
 }

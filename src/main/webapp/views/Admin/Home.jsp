@@ -10,7 +10,7 @@
 <%@ include file="/Common/Admin/HeadAd.jsp"%>
 </head>
 <body>
-<%@ include file="/Common/Admin/HeaderAD.jsp"%>
+	<%@ include file="/Common/Admin/HeaderAD.jsp"%>
 	<div class="preloader">
 		<div class="lds-ripple">
 			<div class="lds-pos"></div>
@@ -21,9 +21,20 @@
 		data-sidebartype="full" data-sidebar-position="absolute"
 		data-header-position="absolute" data-boxed-layout="full">
 		<div class="page-wrapper">
+		<div class="container-fluid">
 		
-		</div>
-		</div>
 		
+			<div class="ratio ratio-16x9">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/v5q7VquhNWs"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen></iframe>
+
+			</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

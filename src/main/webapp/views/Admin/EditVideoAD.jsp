@@ -23,11 +23,9 @@
 		data-header-position="absolute" data-boxed-layout="full">
 
 		<div class="page-wrapper">
-		<div class="main-panel">
-			<div class="content-wrapper">
+		     <div class="container-fluid"> 
 				<div class="row">
-
-					<div class="col-12 grid-margin stretch-card">
+					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title"> Chỉnh Sửa Video </h4>
@@ -92,9 +90,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- main-panel ends -->
 	</div>
-		</div>
-	
 </body>
 </html>

@@ -98,19 +98,19 @@
 							href="VideoList" aria-expanded="false"><i
 								class="me-3 fa fa-table" aria-hidden="true"></i><span
 								class="hide-menu">Thông Tin Video</span></a></li>
+								<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="FavoritesAD" aria-expanded="false"><i
+								class="me-3 fa fa-table" aria-hidden="true"></i><span
+								class="hide-menu">Video Yêu Thích</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="CreateVideo" aria-expanded="false"><i
 								class="me-3 fa fa-columns" aria-hidden="true"></i><span
 								class="hide-menu">Thêm Video Mới</span></a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="" aria-expanded="false"><i
-								class="me-3 fa fa-info-circle" aria-hidden="true"></i><span
-								class="hide-menu">Error 404</span></a></li>
 						<li class="text-center p-20 upgrade-btn"><a
 							href="Logout"
-							class="btn btn-danger text-white mt-4" target="_blank">Toát</a></li>
+							class="btn btn-danger text-white mt-4" target="_blank">Thoát</a></li>
 					</ul>
 
 				</nav>

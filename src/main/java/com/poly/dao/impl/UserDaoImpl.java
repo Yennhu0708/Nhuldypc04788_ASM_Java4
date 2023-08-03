@@ -1,7 +1,9 @@
 package com.poly.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import com.poly.constrant.nameStored;
 import com.poly.dao.AbstractDao;
 import com.poly.dao.UserDAO;
 import com.poly.entity.User;
@@ -47,6 +49,35 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDAO {
 	public User findByPassword(String password) {
 		String sql = "SELECT o FROM User o WHERE o.password = ?0";
 		return super.findOne(User.class, sql, password);
+	}
+
+	@Override
+	public User create(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User update(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User delete(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> findAllTwo() {
+		return super.findAllTwo(User.class);
+	}
+
+	@Override
+	public List<User> findUsersLikedVideoByVideoHref(Map<String, Object> params) {
+		return super.callStored(nameStored.FIND_USER_LIKED_VIDEO_BY_VIDEO_HREF, params);
+		
 	}
 
 }

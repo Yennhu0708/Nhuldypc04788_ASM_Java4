@@ -23,8 +23,9 @@
 		data-header-position="absolute" data-boxed-layout="full">
 
 		<div class="page-wrapper">
+		  <div class="container-fluid">
 				<div class="row">
-	<form action="CreateVideo" class="forms-sample" method="post">
+				<form action="CreateVideo" class="forms-sample" method="post">
 					<div class="col-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
@@ -89,6 +90,7 @@
 				</div>
 				
 			</div>
+		</div>
 		</div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.poly.service.impl;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import com.poly.dao.UserDAO;
 import com.poly.dao.impl.UserDaoImpl;
@@ -84,9 +86,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updateEditUser(String username, String password, String email) {
+	public User updateEditUser(String username, String password, String email,boolean newStatus) {
 		User user = findByUsername(username);
 		user.setEmail(email);
+		user.setIsActive(newStatus);
 		return dao.update(user);
 	}
 
@@ -101,4 +104,17 @@ public class UserServiceImpl implements UserService {
 		return update(entity);
 	}
 
+	@Override
+	public List<User> findAllTwo() {
+		return dao.findAllTwo();
+	}
+
+	@Override
+	public List<User> findUsersLikedVideoByVideoHref(String href) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("videoHref", href);
+		return dao.findUsersLikedVideoByVideoHref(params);
+	}
+
+	
 }

@@ -1,6 +1,7 @@
 package com.poly.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.poly.entity.User;
 
@@ -16,4 +17,6 @@ public interface UserDAO {
 	User create (User entity);
 	User update (User entity);
 	User delete (User entity);
+	List<User> findAllTwo();
+	List<User> findUsersLikedVideoByVideoHref(Map<String, Object> params);
 }

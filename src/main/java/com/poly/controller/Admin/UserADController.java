@@ -62,7 +62,7 @@ public class UserADController extends HttpServlet {
 	protected void doGetUserList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<User> users = userService.findAll();
+		List<User> users = userService.findAllTwo();
 
 		request.setAttribute("users", users);
 		request.getRequestDispatcher("/views/Admin/ListUserAD.jsp").forward(request, response);
@@ -98,9 +98,11 @@ public class UserADController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		
+		String getStatus = request.getParameter("status");
+		Boolean newStatus = Boolean.parseBoolean(getStatus); 
+		    
 		if (username != null && password != null && email != null) {
-			User user = userService.updateEditUser(username, password, email);
+			User user = userService.updateEditUser(username, password, email, newStatus);
 
 			if (user != null) {
 
