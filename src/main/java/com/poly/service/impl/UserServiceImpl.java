@@ -116,5 +116,12 @@ public class UserServiceImpl implements UserService {
 		return dao.findUsersLikedVideoByVideoHref(params);
 	}
 
+	@Override
+	public List<User> UserShareVideoByHref(String href) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("videoHref", href);
+		return dao.UserShareVideoByHref(params);
+	}
+
 	
 }

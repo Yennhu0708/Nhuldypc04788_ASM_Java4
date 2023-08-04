@@ -1,7 +1,6 @@
 package com.poly.controller.Admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poly.constrant.SessionAttr;
 import com.poly.dio.VideoLikeInfo;
 import com.poly.entity.User;
@@ -21,7 +19,7 @@ import com.poly.service.UserService;
 import com.poly.service.impl.StastServiceImpl;
 import com.poly.service.impl.UserServiceImpl;
 
-@WebServlet({ "/Admin", "/VideoList", "/FavoritesAD" })
+@WebServlet({ "/Admin", "/VideoList", "/FavoritesAD", "/ShareList" })
 public class HomeADController extends HttpServlet {
 
 	private static final long serialVersionUID = -7576260296437171312L;
@@ -43,6 +41,9 @@ public class HomeADController extends HttpServlet {
 			break;
 		case "/FavoritesAD":
 			doGetFavoritesAD(request, response);
+			break;
+		case "/ShareList":
+			doGetUserShare(request, response);
 			break;
 		}
 	}
@@ -88,6 +89,24 @@ public class HomeADController extends HttpServlet {
 		request.setAttribute("videoHref", videoHref);
 		request.setAttribute("videos", video);
 		request.getRequestDispatcher("/views/Admin/favoritesAD.jsp").forward(request, response);
+	}
+
+	protected void doGetUserShare(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String videoHref = request.getParameter("href");
+		List<VideoLikeInfo> video = stastService.findVideoLikeInfo();
+
+		if (videoHref == null) {
+			request.setAttribute("video", video);
+		} else {
+			List<User> user = userService.UserShareVideoByHref(videoHref);
+			request.setAttribute("user", user);
+		}
+
+		request.setAttribute("videoHref", videoHref);
+		request.setAttribute("video", video);
+		request.getRequestDispatcher("/views/Admin/ShareListAD.jsp").forward(request, response);
 	}
 
 }

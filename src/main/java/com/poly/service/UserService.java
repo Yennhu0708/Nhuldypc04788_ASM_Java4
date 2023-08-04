@@ -35,5 +35,5 @@ public interface UserService {
 	List<User> findAllTwo();
 	
 	List<User>  findUsersLikedVideoByVideoHref(String href);
-
+	List<User> UserShareVideoByHref(String href);
 }

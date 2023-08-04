@@ -38,11 +38,12 @@
 										aria-label="Default select example">
 										<option selected disabled>Video Yêu Thích</option>
 										<c:forEach items="${videos}" var="item">
-											<option value="${item.href}">${item.tille}</option>
+											<option value="${item.href}">${item.title}</option>
 										</c:forEach>
 									</select>
-
-									<button type="submit" class="btn btn-success mb-3">Tìm kiếm</button>
+								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+									<button type="submit" class="btn btn-outline-info  me-md-2 mt-3 mb-3">Tìm kiếm</button>
+									</div>
 								</form>
 								<div class="table-responsive">
 									<table class="table user-table no-wrap" id="userTable">

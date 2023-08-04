@@ -11,4 +11,5 @@ public interface HistoryDAO {
 	History findByUserIdAndVideoId(Integer userId, Integer videoId);
 	History create (History entity);
 	History update (History entity);
+	History delete (History entity);
 }

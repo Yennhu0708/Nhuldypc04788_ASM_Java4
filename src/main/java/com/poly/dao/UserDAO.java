@@ -19,4 +19,5 @@ public interface UserDAO {
 	User delete (User entity);
 	List<User> findAllTwo();
 	List<User> findUsersLikedVideoByVideoHref(Map<String, Object> params);
+	List<User> UserShareVideoByHref(Map<String, Object> params);
 }

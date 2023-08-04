@@ -13,4 +13,6 @@ public interface HistoryService {
 	History create (User user, Video video);
 	boolean updateLikeOrUnlike(User user, String videoHref);
 	History findUserIdAndVideoId(Integer userId, Integer videoId);
+	History delete(User user, Video video);
+	
 }

@@ -80,4 +80,10 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDAO {
 		
 	}
 
+	@Override
+	public List<User> UserShareVideoByHref(Map<String, Object> params) {
+		return super.callStored("User.UserShareVideoByHref",params);
+	
+	}
+
 }

@@ -108,6 +108,11 @@
 							href="CreateVideo" aria-expanded="false"><i
 								class="me-3 fa fa-columns" aria-hidden="true"></i><span
 								class="hide-menu">Thêm Video Mới</span></a></li>
+								<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="ShareList" aria-expanded="false"><i
+								class="me-3 fa fa-columns" aria-hidden="true"></i><span
+								class="hide-menu">Danh Sách Share Video</span></a></li>
 						<li class="text-center p-20 upgrade-btn"><a
 							href="Logout"
 							class="btn btn-danger text-white mt-4" target="_blank">Thoát</a></li>
