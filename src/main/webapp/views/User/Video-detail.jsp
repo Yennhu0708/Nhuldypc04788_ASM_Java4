@@ -8,6 +8,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${video.title}</title>
 <%@ include file="/Common/Head.jsp"%>
+<style>
+    .video-title2 {
+        display: block;
+        margin-top: 5px;
+        color: black; /* Change to black */
+        font-weight: bolder;
+    }
+
+    .video-title2:hover {
+        color: #007f46; /* Change to green */
+    }
+
+    .modal {
+        display: flex;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Make it slightly darker */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .close {
+        color: black; /* Change to black */
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        text-decoration: none;
+    }
+
+    .modal-content {
+        background-color: rgba(255, 255, 255, 0.8); /* Make it slightly more transparent */
+    }
+
+    .modal-content form {
+        border-radius: 10px;
+        border: none; /* Remove the border */
+        padding: 10px;
+    }
+
+    .modal-content form button {
+        background-color: #24c5aba6;
+        color: #242424;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        outline: none;
+        float: right; /* Move the button to the right */
+    }
+
+    .modal-content form button:hover {
+        background-color: #00ffd6a6;
+         color: white;
+    }
+</style>
+
 </head>
 <body>
 	<!-- Header -->
@@ -65,6 +142,7 @@
 		<div class="  mb-5 tm-gallery">
 			<div class="tm-bg-gray tm-video-details">
 				<div class=" mb-5">
+				 <h1 class="text-info">${video.title}</h1>
 					<c:if test="${ empty sessionScope.currentUser}">
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<button type="button" class="btn btn-secondary">Like</button>
@@ -83,26 +161,14 @@
 								</c:choose>
 
 							</button>
-							<a class="btn btn-warning">Share</a> <a class="btn btn-success">DownLoad</a>
+							<a class="btn btn-warning" onclick="openModal()">Share</a> 
+							<a class="btn btn-success">DownLoad</a>
 						</div>
 					</c:if>
 				</div>
-				<input id="videoInHdn" type="hidden" value="${video.href}">
-				<div class="mb-4 d-flex flex-wrap">
-					<div class="mr-4 mb-2"></div>
-					<div class="mr-4 mb-2">
-						<span class="tm-text-gray-dark">Format: </span><span
-							class="tm-text-primary">MP4</span>
-					</div>
-					<div>
-						<span class="tm-text-gray-dark">Duration: </span><span
-							class="tm-text-primary">00:00:20</span>
-					</div>
-				</div>
 				<div class="mb-4">
-					<h3 class="tm-text-gray-dark mb-3">License</h3>
-					<p>Free for both personal and commercial use. No need to pay
-						anything. No need to make any attribution.</p>
+					<h3 class="tm-text-gray-dark mb-3">Nội dung phim: </h3>
+					<p class="text-white">${video.description}</p>
 				</div>
 			</div>
 
@@ -111,7 +177,36 @@
 		</div>
 	</div>
 	<hr style="color: aliceblue;">
-
+<div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class=" row justify-content-center align-items-center">
+                <form action="video" method="POST">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="fw-bold" for="profilePass">Title: </label> 
+                                <input type="text" class="form-control mt-2 mb-2" name="sharetitle" 
+                                value="${video.title}" readonly>
+                                <input type="text" class="form-control mt-2 mb-2" name="sharehref" 
+                                value="${video.href}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="fw-bold" for="profileID">TO: </label> 
+                                <input type="email" class="form-control mt-2 mb-2" name="toEmail" required>
+                            </div>
+                        </div>                                                
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-lg courseHover">Chia Sẻ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 	<!-- Footer -->
 	<%@ include file="/Common/Footer.jsp"%>
 	<script>
@@ -130,6 +225,33 @@
 				alert('Vui Lòng Thử Lại')
 			})
 		});
+		
+		
+
+		// Lấy tham chiếu đến modal
+        var modal = document.getElementById("myModal");
+
+        // Mở modal
+        function openModal() {
+            modal.style.display = "block";
+        }
+
+        // Đóng modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+		
+        // Tắt hiện modal khi trang load xong
+        window.onload = function() {
+          closeModal();
+        };
+        
+        // Đóng modal khi nhấn bên ngoài modal
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
 	</script>
 </body>
 </html>
