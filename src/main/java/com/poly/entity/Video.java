@@ -10,31 +10,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "video")
 public class Video {
-	
-	
+
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "title")
-	private String  title;
-	
+	private String title;
+
 	@Column(name = "href")
 	private String href;
-	
+
 	@Column(name = "poster")
 	private String poster;
-	 
+
 	@Column(name = "views")
 	private Integer view;
-	
+
 	@Column(name = "shares")
 	private Integer shares;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "isActive")
 	private Boolean isActive;
 
@@ -101,7 +100,5 @@ public class Video {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	
-	
+
 }

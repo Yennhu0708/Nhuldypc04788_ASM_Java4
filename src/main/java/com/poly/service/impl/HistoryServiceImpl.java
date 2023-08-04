@@ -34,6 +34,10 @@ public class HistoryServiceImpl  implements HistoryService{
 	public History findByUserIdAndVideoId(Integer userId, Integer videoId) {
 		return dao.findByUserIdAndVideoId(userId, videoId);
 	}
+	@Override
+	public History findUserIdAndVideoId(Integer userId, Integer videoId) {
+		return dao.findByUserIdAndVideoId(userId, videoId);
+	}
 
 	@Override
 	public History create(User user, Video video) {
@@ -68,9 +72,16 @@ public class HistoryServiceImpl  implements HistoryService{
 	}
 
 	@Override
-	public History findUserIdAndVideoId(Integer userId, Integer videoId) {
-		// TODO Auto-generated method stub
-		return null;
+	public History delete(User user, Video video) {
+		History chkExist = findByUserIdAndVideoId(user.getId(), video.getId());
+		if (chkExist != null) {
+			
+			return dao.delete(chkExist);
+		}
+
+		return chkExist;
 	}
+
+	
 	
 }

@@ -56,8 +56,12 @@ public class Videocontroller extends HttpServlet {
 		case "like":
 			doGetLike(session, href, req, resp);
 			break;
-
+		case "delete":
+			doGetDelete(session, href, req, resp);
+			break;
+			
 		}
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -71,7 +75,21 @@ public class Videocontroller extends HttpServlet {
 			break;
 		}
 	}
+	
+	protected void doGetDelete(HttpSession session, String href, HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
+		
+	    User currentUser = (User) session.getAttribute(SessionAttr.Current_user);
+	    Video video = videoService.findByHref(href);
+		
+		if(currentUser != null) {
+			History history = historyService.delete(currentUser, video);
+		}	    
+		
+		request.getRequestDispatcher("/video?action=watch&id=" + href).forward(request, response);
+	}
+	
 	// localhosst:8080/Nhuldypc04788_ASM_SOF301/video?action=watch&id={href}
 	private void doGetWatch(HttpSession session, String href, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
