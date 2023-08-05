@@ -1,5 +1,4 @@
 package com.poly.service.impl;
-
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -8,7 +7,6 @@ import com.poly.dao.UserDAO;
 import com.poly.dao.impl.UserDaoImpl;
 import com.poly.entity.User;
 import com.poly.service.UserService;
-
 public class UserServiceImpl implements UserService {
 
 	private UserDAO dao;

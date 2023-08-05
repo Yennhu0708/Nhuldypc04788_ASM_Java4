@@ -49,7 +49,7 @@
                                             <c:forEach items="${videos}" var="item">
                                                 <tr>
                                                     <td>${item.videoId}</td>
-                                                    <td>${item.tille}</td>
+                                                    <td>${item.title}</td>
                                                     <td> <a href = "video?action=watch&id=${item.href}" >${item.href}</a></td>
 													<td>${item.totalLike}</td>
 													<td><a href="EditVideo?id=${item.videoId}" class="btn btn-outline-info">Edit</a></td>

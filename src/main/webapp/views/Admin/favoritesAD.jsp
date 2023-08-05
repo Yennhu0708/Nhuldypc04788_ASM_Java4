@@ -42,7 +42,7 @@
 										</c:forEach>
 									</select>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-									<button type="submit" class="btn btn-outline-info  me-md-2 mt-3 mb-3">Tìm kiếm</button>
+									<button type="submit" class="btn btn-outline-info  me-md-2 mt-3 mb-3">Chọn</button>
 									</div>
 								</form>
 								<div class="table-responsive">
@@ -63,7 +63,7 @@
 													<td><c:choose>
 															<c:when test="${item.isActive}">Đang hoạt động</c:when>
 															<c:otherwise>Ngưng hoạt động</c:otherwise>
-														</c:choose></td>
+													</c:choose></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -79,9 +79,21 @@
 		</div>
 	</div>
 	<script>
-		$(document).ready(function() {
+	/* 	$(document).ready(function() {
 			$('#userTable').DataTable();
-		});
+		}); */
+		
+		 $(document).ready(function() {
+		        // Khởi tạo DataTables với cài đặt tìm kiếm
+		        var dataTable = $('#userTable').DataTable({
+		            "searching": true // Cho phép tìm kiếm trong bảng
+		        });
+		        
+		        // Bắt sự kiện khi người dùng nhập vào ô tìm kiếm
+		        $('#userTable_filter input').on('keyup', function() {
+		            dataTable.search(this.value).draw();
+		        });
+		    });
 	</script>
 </body>
 </html>
