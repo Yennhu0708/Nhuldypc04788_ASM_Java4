@@ -42,8 +42,11 @@ public class VideoLikeInfo {
 		this.totalLike = totalLike;
 	}
 
+<<<<<<< HEAD
 	
 
 
 
+=======
+>>>>>>> ba7b99711d385ba2a98f7268466b0a5cfdb107c2
 }
