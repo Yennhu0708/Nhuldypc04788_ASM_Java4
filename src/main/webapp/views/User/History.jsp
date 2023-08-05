@@ -31,8 +31,7 @@
 				</h5>
 				
 					<figure class="effect-ming tm-video-item">
-						<img src="<c:url value = '/Templates/User/img/img-03.jpg'/>"
-							alt="Image" class="img-fluid">
+						<img src="${video.poster}"alt= "Image" class="img-fluid" >
 						<%-- <c:if test="${ not empty sessionScope.currentUser}"> --%>
 						<figcaption
 							class="d-flex align-items-center justify-content-center">

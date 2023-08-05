@@ -18,17 +18,8 @@ import com.poly.service.EmailService;
 import com.poly.service.UserService;
 import com.poly.service.impl.EmailervliceImpl;
 import com.poly.service.impl.UserServiceImpl;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
-@WebServlet(urlPatterns = { "/Login", "/Logout", "/Register", "/Forgotpassword", "/ChangePass", "/Profile" })
+@WebServlet(urlPatterns = { "/Login", "/Logout", "/Register", "/Forgotpassword", "/ChangePass", "/EditProfile", "/Profile"})
 public class UserController extends HttpServlet {
 
 	private static final long serialVersionUID = -5860351843059541642L;
@@ -36,27 +27,30 @@ public class UserController extends HttpServlet {
 	private EmailService emailService = new EmailervliceImpl();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		String path = req.getServletPath();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String path = request.getServletPath();
 		switch (path) {
 		case "/Login":
-			doGetLogin(req, resp);
+			doGetLogin(request, response);
 			break;
 		case "/Register":
-			doGetRegister(req, resp);
+			doGetRegister(request, response);
 			break;
 		case "/Forgotpassword":
-			doGetForgotpassword(req, resp);
+			doGetForgotpassword(request, response);
 			break;
 		case "/ChangePass":
-			doGetChangePass(req, resp);
+			doGetChangePass(request, response);
 			break;
 		case "/Profile":
-			doGetProfile(session, req, resp);
+			doGetProfile(session, request, response);
+			break;
+		case "/EditProfile":
+			doGetEditProfile(session, request, response);
 			break;
 		case "/Logout":
-			doGetLogout(session, req, resp);
+			doGetLogout(session, request, response);
 			break;
 
 		}
@@ -64,21 +58,24 @@ public class UserController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		String path = req.getServletPath();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String path = request.getServletPath();
 		switch (path) {
 		case "/Login":
-			doPostLogin(session, req, resp);
+			doPostLogin(session, request, response);
 			break;
 		case "/Register":
-			doPostRegister(session, req, resp);
+			doPostRegister(session, request, response);
 			break;
 		case "/Forgotpassword":
-			doPostForgotpassword(req, resp);
+			doPostForgotpassword(request, response);
 			break;
 		case "/ChangePass":
-			doPostChangePass(session, req, resp);
+			doPostChangePass(session, request, response);
+			break;
+		case "/EditProfile":
+			doPostEditProfile(session, request, response);
 			break;
 
 		}
@@ -86,32 +83,32 @@ public class UserController extends HttpServlet {
 	}
 
 	// Đăng Nhập
-	private void doGetLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/Login.jsp");
-		requestDispatcher.forward(req, resp);
+	private void doGetLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/User/Login.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
-	private void doPostLogin(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+	private void doPostLogin(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 
 		User user = userService.login(username, password);
 
 		if (user != null) {
 			session.setAttribute(SessionAttr.Current_user, user);
-			resp.sendRedirect("Index");
+			response.sendRedirect("Index");
 		} else {
-			resp.sendRedirect("Login");
+			response.sendRedirect("Login");
 
 		}
 
 	}
 
 //Đăng Ký
-	private void doGetRegister(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/Register.jsp");
-		requestDispatcher.forward(req, resp);
+	private void doGetRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/User/Register.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	private void doPostRegister(HttpSession session, HttpServletRequest request, HttpServletResponse response)
@@ -150,41 +147,41 @@ public class UserController extends HttpServlet {
 	}
 
 	// Quên Mật Khẩu
-	private void doGetForgotpassword(HttpServletRequest req, HttpServletResponse resp)
+	private void doGetForgotpassword(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/Forgotpassword.jsp");
-		requestDispatcher.forward(req, resp);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/User/Forgotpassword.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
-	private void doPostForgotpassword(HttpServletRequest req, HttpServletResponse resp)
+	private void doPostForgotpassword(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		resp.setContentType("application/json");
+		response.setContentType("application/json");
 
-		String email = req.getParameter("email");
+		String email = request.getParameter("email");
 
 		User userWithNewPass = userService.resetPassword(email);
 		if (userWithNewPass != null) {
 			emailService.SendEmail(getServletContext(), userWithNewPass, "forgot");
-			resp.setStatus(204);
+			response.setStatus(204);
 		} else {
-			resp.setStatus(400);
+			response.setStatus(400);
 		}
 
 	};
 
 	// Đổi Mật Khẩu
-	private void doGetChangePass(HttpServletRequest req, HttpServletResponse resp)
+	private void doGetChangePass(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/User/ChangePass.jsp");
-		requestDispatcher.forward(req, resp);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/User/ChangePass.jsp");
+		requestDispatcher.forward(request, response);
 	};
 
-	private void doPostChangePass(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+	private void doPostChangePass(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User currentUser = (User) session.getAttribute(SessionAttr.Current_user);
 
-		String oldPassword = req.getParameter("oldPassword");
-		String newPassword = req.getParameter("newPassword");
+		String oldPassword = request.getParameter("oldPassword");
+		String newPassword = request.getParameter("newPassword");
 		String oldPass = currentUser.getPassword();
 
 		if (oldPass.equals(oldPassword)) {
@@ -194,35 +191,96 @@ public class UserController extends HttpServlet {
 			if (user != null) {
 
 				session.removeAttribute(SessionAttr.Current_user);
-				resp.sendRedirect("Login");
+				response.sendRedirect("Login");
 			} else {
-				resp.sendRedirect("ChangePass");
+				response.sendRedirect("ChangePass");
 			}
 		} else {
-			resp.sendRedirect("ChangePass");
+			response.sendRedirect("ChangePass");
 		}
 
 	}
 
-	// Chỉnh sửa thông tin
-	private void doGetProfile(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+	//Hiển thị thông tin
+	private void doGetProfile(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = (User) session.getAttribute(SessionAttr.Current_user);
 		System.out.println(user);
 		
 		String username = user.getUsername();
 		String email = user.getEmail();
-		
-		req.setAttribute("username", username);
-		req.setAttribute("email", email);
-		req.getRequestDispatcher("/views/User/Profile.jsp").forward(req, resp);
+		Boolean status = user.getIsActive();
+		String trangthai = "";
+		if(status == true ) {
+			trangthai = "Đang hoạt động";
+		}else {
+			trangthai = "Ngừng hoạt động";
+		}
+		request.setAttribute("username", username);
+		request.setAttribute("email", email);
+		request.setAttribute("status", trangthai);
+		request.getRequestDispatcher("/views/User/Profile.jsp").forward(request, response);
 	}
 
 	// Đăng Xuất
-	private void doGetLogout(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+	private void doGetLogout(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		session.removeAttribute(SessionAttr.Current_user);
-		req.getRequestDispatcher("/views/User/Index.jsp").forward(req, resp);
+		request.getRequestDispatcher("/views/User/Index.jsp").forward(request, response);
 	}
+	
+	
+	// Chỉnh sửa thông tin
+		private void doGetEditProfile(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			User user = (User) session.getAttribute(SessionAttr.Current_user);
+			System.out.println("Check edit: " + user);
+//			
+			String username = user.getUsername();
+			String password = user.getPassword();
+			String email = user.getEmail();
+			
+			request.setAttribute("username", username);
+			request.setAttribute("email", email);
+			request.setAttribute("password", password);
+			
+			request.getRequestDispatcher("/views/User/Edit-profile.jsp").forward(request, response);
+		}
+		// Chỉnh sửa thông tin
+		private void doPostEditProfile(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			String email = request.getParameter("email");
+			
+			User chkMail = userService.findByEmail(email);
+			if(chkMail != null){
+				response.sendRedirect("EditProfile?error=TrungMail");
+				return;
+			}
+			
+			if (username != null && password != null && email != null) {
+		        // Assuming userService handles user-related operations
+		        User user = userService.updateProfileUser(username, password, email);
 
+		        if (user != null) {
+		            // Check if the email has changed
+		            String currentEmail = (String) session.getAttribute("email");
+		            if (currentEmail != null && currentEmail.equals(email)) {
+		                // Ko đổi gì thì về lại profile 
+		                response.sendRedirect("Profile");
+		            } else {
+		                // Thay đổi thì về index 
+		                response.sendRedirect("Index");
+		            }
+		        } else {
+		            response.sendRedirect("EditProfile");
+		        }
+		    }
+			
+		}
+		
+		
+		
+		
 }

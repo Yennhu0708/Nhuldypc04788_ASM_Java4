@@ -30,7 +30,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDAO {
 
 	@Override
 	public User findByUsernameandPassword(String username, String password) {
-		String sql = "SELECT o FROM User o WHERE o.username = ?0 AND o.password = ?1";
+		String sql = "SELECT o FROM User o WHERE o.username = ?0 AND o.password = ?1 AND o.isActive = 1";
 		return super.findOne(User.class, sql, username, password);
 
 	}
@@ -50,24 +50,24 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDAO {
 		String sql = "SELECT o FROM User o WHERE o.password = ?0";
 		return super.findOne(User.class, sql, password);
 	}
-
-	@Override
-	public User create(User entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User update(User entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User delete(User entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//
+//	@Override
+//	public User create(User entity) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public User update(User entity) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public User delete(User entity) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public List<User> findAllTwo() {

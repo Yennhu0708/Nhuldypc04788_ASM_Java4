@@ -20,7 +20,7 @@
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
 
-				<div class="col col-lg-6 mb-4 mb-lg-0">
+				<div class="col col-lg-12 mb-4 mb-lg-0">
 
 					<div class="card mb-3" style="border-radius: .5rem;">
 
@@ -30,9 +30,8 @@
 								style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
 
 								<img src='<c:url value='/Templates/User/img/logo.png' />'
-									alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
-									<br>
-								<button type="button" class="btn btn-outline-info">Chỉnh Sửa</button>
+									alt="Avatar" class="img-fluid my-5" style="width: 100px;" /> <br>
+							<a href ="EditProfile" type="submit" class="btn btn-outline-info">Chỉnh Sửa</a>
 							</div>
 
 							<div class="col-md-8">
@@ -49,13 +48,24 @@
 											<h6>Email:</h6>
 											<h6 class="text-dark mt-4">${email}</h6>
 										</div>
+										<div class="col-6 mb-3">
+											<h6>Mật Khẩu:</h6>
+											<h6 class="text-dark mt-4">******</h6>
+										</div>
+										<div class="col-6 mb-3">
+											<div class="col-6 mb-3">
+                                        <h6>Trạng thái:</h6>
+                                        <h6 class="text-dark mt-4">${status}</h6>
+                                    </div>
+										</div>
 									</div>
-									<hr class="mt-0 mb-4">
+								</div>
 
-									<div class="pt-1 text-center">
-										<h6>Điểm Tích Lũy</h6>
-										<p>2000 điểm</p>
-									</div>
+								<hr class="mt-0 mb-4">
+
+								<div class="pt-1 text-center">
+									<h6>Điểm Tích Lũy</h6>
+									<p>2000 điểm</p>
 								</div>
 							</div>
 						</div>

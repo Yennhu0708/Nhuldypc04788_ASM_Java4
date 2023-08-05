@@ -34,10 +34,10 @@
 									href="Profile">Trang Cá Nhân</a></li>
 								<li class="nav-item"><a class="nav-link subnav-link"
 									href="ChangePass">Đổi Mật Khẩu</a></li>
-									<c:if test="${sessionScope.currentUser.isAdmin}">
-								<li class="nav-item"><a class="nav-link subnav-link"
-									href="Admin">Trang Quản Lý </a></li>
-									</c:if>
+								<c:if test="${sessionScope.currentUser.isAdmin}">
+									<li class="nav-item"><a class="nav-link subnav-link"
+										href="Admin">Trang Quản Lý </a></li>
+								</c:if>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link nav-link-1"
 							href="Favorites">Yêu Thích</a></li>

@@ -63,9 +63,7 @@
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle waves-effect waves-dark" href="#"
 							id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false"> <img
-								src="<c:url value ='Templates/Amind/assets/images/users/1.jpg'/>"
-								alt="user" class="profile-pic me-2">Markarn Doe
+							aria-expanded="false"> <strong>${sessionScope.currentUser.username}</strong> 
 						</a>
 						
 						</li>

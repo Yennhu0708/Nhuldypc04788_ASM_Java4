@@ -32,6 +32,8 @@ public interface UserService {
 	
 	User updateEditUser(String username, String password, String email,boolean getStatus);
 	
+	User updateProfileUser(String username, String password, String email);
+	
 	List<User> findAllTwo();
 	
 	List<User>  findUsersLikedVideoByVideoHref(String href);

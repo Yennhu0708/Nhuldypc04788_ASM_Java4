@@ -121,5 +121,14 @@ public class UserServiceImpl implements UserService {
 		return dao.UserShareVideoByHref(params);
 	}
 
+	@Override
+	public User updateProfileUser(String username, String password, String email) {
+		User user = findByUsername(username);
+			user.setEmail(email);
+			return dao.update(user);
+		
+	
+	}
+
 	
 }
