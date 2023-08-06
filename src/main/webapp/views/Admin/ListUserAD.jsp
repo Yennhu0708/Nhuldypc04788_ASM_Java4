@@ -55,7 +55,7 @@
                                                     <td>${user.isAdmin ? 'Admin' : 'User'}</td>
                                                      <td>
 													<a href ="edituser?id=${user.id}" type="submit" class="btn btn-outline-info">Sửa</a>
-													<button type="submit" class="btn btn-outline-danger">Xóa</button>
+													<a href ="edituser?id=${user.id}" type="submit" class="btn btn-outline-danger">Xóa</a>
 													</td>
                                                 </tr>
                                             </c:forEach>
