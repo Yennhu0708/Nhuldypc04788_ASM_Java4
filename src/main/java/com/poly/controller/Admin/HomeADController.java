@@ -79,6 +79,7 @@ public class HomeADController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String videoHref = request.getParameter("href");
+		System.out.println(videoHref);
 
 		List<VideoLikeInfo> video = stastService.findVideoLikeInfo();
 

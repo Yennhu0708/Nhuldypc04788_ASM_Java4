@@ -143,6 +143,7 @@
 			<div class="tm-bg-gray tm-video-details">
 				<div class=" mb-5">
 				 <h1 class="text-info">${video.title}</h1>
+				 <input id="videoInHdn" type="hidden" value="${video.href}">
 					<c:if test="${ empty sessionScope.currentUser}">
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<button type="button" class="btn btn-secondary">Like</button>
@@ -169,6 +170,7 @@
 				<div class="mb-4">
 					<h3 class="tm-text-gray-dark mb-3">Nội dung phim: </h3>
 					<p class="text-white">${video.description}</p>
+					
 				</div>
 			</div>
 

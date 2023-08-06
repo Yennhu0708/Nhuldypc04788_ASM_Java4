@@ -35,7 +35,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Danh Sách Video</h4>
                                     <div class="table-responsive">
-                                        <table class="table user-table no-wrap" id="userTable">
+                                        <table class="table user-table no-wrap" id="">
                                             <thead>
                                             <tr>
                                                 <th class="border-top-0">Id</th>
