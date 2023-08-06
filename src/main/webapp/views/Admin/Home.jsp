@@ -21,18 +21,57 @@
 		data-sidebartype="full" data-sidebar-position="absolute"
 		data-header-position="absolute" data-boxed-layout="full">
 		<div class="page-wrapper">
-		<div class="container-fluid">
 		
-		
-			<div class="ratio ratio-16x9">
-				<iframe width="560" height="315"
-					src="https://www.youtube.com/embed/v5q7VquhNWs"
-					title="YouTube video player" frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					allowfullscreen></iframe>
+		<div style="width: 80%; margin: auto;">
+        <canvas id="videoChart"></canvas>
+    </div>
 
-			</div>
-			</div>
+    <%-- Dữ liệu lượt xem video từ máy chủ JSP --%>
+    <%
+        // Giả sử bạn có một danh sách lượt xem video từ cơ sở dữ liệu.
+        // Ở đây, tôi sẽ sử dụng một mảng giả định để đại diện cho dữ liệu.
+        int[] videoViews = {100, 200, 300, 400, 500}; // Số lượt xem video theo thời gian.
+
+        // Chuyển dữ liệu lượt xem video sang định dạng JSON để sử dụng trong JavaScript.
+        StringBuilder data = new StringBuilder("[");
+        for (int i = 0; i < videoViews.length; i++) {
+            data.append(videoViews[i]);
+            if (i < videoViews.length - 1) {
+                data.append(",");
+            }
+        }
+        data.append("]");
+    %>
+
+    <script>
+        // Dữ liệu lượt xem video từ máy chủ JSP được chuyển sang JavaScript.
+        var videoViewsData = <%= data.toString() %>;
+
+        // Vẽ biểu đồ bằng Chart.js
+        var ctx = document.getElementById('videoChart').getContext('2d');
+        var videoChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Ngày 1', 'Ngày 2', 'Ngày 3', 'Ngày 4', 'Ngày 5'], // Các nhãn trục x (có thể tùy chỉnh theo dữ liệu thực tế).
+                datasets: [{
+                    label: 'Lượt xem video',
+                    data: videoViewsData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+		
+		
 		</div>
 	</div>
 

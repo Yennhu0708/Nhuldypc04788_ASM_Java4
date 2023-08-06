@@ -19,7 +19,7 @@ import com.poly.service.UserService;
 import com.poly.service.impl.StastServiceImpl;
 import com.poly.service.impl.UserServiceImpl;
 
-@WebServlet({ "/Admin", "/VideoList", "/FavoritesAD", "/ShareList" })
+@WebServlet(urlPatterns = { "/Admin", "/VideoList", "/FavoritesAD", "/ShareList", "/Error" })
 public class HomeADController extends HttpServlet {
 
 	private static final long serialVersionUID = -7576260296437171312L;
@@ -44,6 +44,9 @@ public class HomeADController extends HttpServlet {
 			break;
 		case "/ShareList":
 			doGetUserShare(request, response);
+			break;
+		case "/Error":
+			doGetError(request, response);
 			break;
 		}
 	}
@@ -107,6 +110,9 @@ public class HomeADController extends HttpServlet {
 		request.setAttribute("videoHref", videoHref);
 		request.setAttribute("video", video);
 		request.getRequestDispatcher("/views/Admin/ShareListAD.jsp").forward(request, response);
+	}
+	protected void doGetError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/views/Admin/Error.jsp").forward(request, response);
 	}
 
 }

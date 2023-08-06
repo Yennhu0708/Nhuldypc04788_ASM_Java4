@@ -25,8 +25,7 @@
 		<param-name>pass</param-name>
 		<param-value>ijuijvvycvtoeiyf</param-value>
 	</context-param>
-	
-	
+	<!--Gửi mail  -->
 	<welcome-file-list>
 		<welcome-file>Redirect.jsp</welcome-file>
 	</welcome-file-list>
